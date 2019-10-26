@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.gameViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.OpenLabel = new System.Windows.Forms.Label();
@@ -37,18 +37,19 @@
             this.OpenFileButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.RoomsLabel = new System.Windows.Forms.Label();
-            this.gameViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.RoomsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.WorldBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.GameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoomsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WorldBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GameBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // listBox1
+            // gameViewModelBindingSource
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 95);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(244, 404);
-            this.listBox1.TabIndex = 2;
+            this.gameViewModelBindingSource.DataSource = typeof(Zork.Builder.ViewModels.GameViewModel);
             // 
             // AddButton
             // 
@@ -103,42 +104,66 @@
             // RoomsLabel
             // 
             this.RoomsLabel.AutoSize = true;
-            this.RoomsLabel.Location = new System.Drawing.Point(111, 75);
+            this.RoomsLabel.Location = new System.Drawing.Point(12, 59);
             this.RoomsLabel.Name = "RoomsLabel";
             this.RoomsLabel.Size = new System.Drawing.Size(52, 17);
             this.RoomsLabel.TabIndex = 8;
             this.RoomsLabel.Text = "Rooms";
             this.RoomsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gameViewModelBindingSource
+            // listBox1
             // 
-            this.gameViewModelBindingSource.DataSource = typeof(Zork.Builder.ViewModels.GameViewModel);
+            this.listBox1.DataSource = this.RoomsBindingSource;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(15, 80);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(241, 404);
+            this.listBox1.TabIndex = 9;
+            // 
+            // RoomsBindingSource
+            // 
+            this.RoomsBindingSource.DataMember = "Rooms";
+            this.RoomsBindingSource.DataSource = this.WorldBindingSource;
+            // 
+            // WorldBindingSource
+            // 
+            this.WorldBindingSource.DataMember = "World";
+            this.WorldBindingSource.DataSource = this.GameBindingSource;
+            // 
+            // GameBindingSource
+            // 
+            this.GameBindingSource.AllowNew = true;
+            this.GameBindingSource.DataMember = "Game";
+            this.GameBindingSource.DataSource = this.gameViewModelBindingSource;
             // 
             // ZorkMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1015, 554);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.RoomsLabel);
             this.Controls.Add(this.OpenFileButton);
             this.Controls.Add(this.FileTextBox);
             this.Controls.Add(this.OpenLabel);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.listBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "ZorkMainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoomsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WorldBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GameBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Label OpenLabel;
@@ -147,6 +172,10 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Label RoomsLabel;
         private System.Windows.Forms.BindingSource gameViewModelBindingSource;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.BindingSource GameBindingSource;
+        private System.Windows.Forms.BindingSource WorldBindingSource;
+        private System.Windows.Forms.BindingSource RoomsBindingSource;
     }
 }
 
