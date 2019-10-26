@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
@@ -36,6 +37,8 @@
             this.OpenFileButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.RoomsLabel = new System.Windows.Forms.Label();
+            this.gameViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -76,8 +79,10 @@
             // 
             // FileTextBox
             // 
+            this.FileTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameViewModelBindingSource, "Filename", true));
             this.FileTextBox.Location = new System.Drawing.Point(88, 6);
             this.FileTextBox.Name = "FileTextBox";
+            this.FileTextBox.ReadOnly = true;
             this.FileTextBox.Size = new System.Drawing.Size(858, 22);
             this.FileTextBox.TabIndex = 6;
             // 
@@ -105,11 +110,15 @@
             this.RoomsLabel.Text = "Rooms";
             this.RoomsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // gameViewModelBindingSource
+            // 
+            this.gameViewModelBindingSource.DataSource = typeof(Zork.Builder.ViewModels.GameViewModel);
+            // 
             // ZorkMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1015, 554);
             this.Controls.Add(this.RoomsLabel);
             this.Controls.Add(this.OpenFileButton);
             this.Controls.Add(this.FileTextBox);
@@ -117,9 +126,12 @@
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.listBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "ZorkMainForm";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +146,7 @@
         private System.Windows.Forms.Button OpenFileButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Label RoomsLabel;
+        private System.Windows.Forms.BindingSource gameViewModelBindingSource;
     }
 }
 

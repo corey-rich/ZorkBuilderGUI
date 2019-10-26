@@ -9,29 +9,34 @@ namespace Zork.Builder
 {
     public partial class ZorkMainForm : Form
     {
-        private WorldViewModel ViewModel
+        private GameViewModel ViewModel
         { 
-            get => mViewModel; 
-            set => mViewModel = value; 
+            get => mViewModel;
+            set
+            {
+                if (mViewModel != value)
+                {
+                    mViewModel = value;
+                    gameViewModelBindingSource.DataSource = mViewModel;
+                }
+            }
         }
 
         public ZorkMainForm()
         {
             InitializeComponent();
-
-            //Player player = new Player();
-            
+            ViewModel = new GameViewModel();
         }
 
         private void OpenFileButton_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ViewModel.World = JsonConvert.DeserializeObject<World>(File.ReadAllText(openFileDialog.FileName));
+                ViewModel.Game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(openFileDialog.FileName));
                 ViewModel.Filename = openFileDialog.FileName;
             }
         }
 
-        private WorldViewModel mViewModel;
+        private GameViewModel mViewModel;
     }
 }
