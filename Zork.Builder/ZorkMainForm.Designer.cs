@@ -41,6 +41,9 @@
             this.RoomsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.WorldBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.GameBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.RoomNameDisplay = new System.Windows.Forms.TextBox();
+            this.RoomDescription = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RoomsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorldBindingSource)).BeginInit();
@@ -115,7 +118,7 @@
             // listBox1
             // 
             this.listBox1.DataSource = this.RoomsBindingSource;
-            this.listBox1.DisplayMember = "Comparer";
+            this.listBox1.DisplayMember = "Name";
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(15, 80);
@@ -130,20 +133,50 @@
             // 
             // WorldBindingSource
             // 
-            this.WorldBindingSource.AllowNew = true;
             this.WorldBindingSource.DataMember = "World";
             this.WorldBindingSource.DataSource = this.GameBindingSource;
             // 
             // GameBindingSource
             // 
+            this.GameBindingSource.AllowNew = true;
             this.GameBindingSource.DataMember = "Game";
             this.GameBindingSource.DataSource = this.gameViewModelBindingSource;
+            // 
+            // RoomNameDisplay
+            // 
+            this.RoomNameDisplay.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.RoomsBindingSource, "Name", true));
+            this.RoomNameDisplay.Location = new System.Drawing.Point(425, 59);
+            this.RoomNameDisplay.Name = "RoomNameDisplay";
+            this.RoomNameDisplay.Size = new System.Drawing.Size(450, 22);
+            this.RoomNameDisplay.TabIndex = 10;
+            this.RoomNameDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // RoomDescription
+            // 
+            this.RoomDescription.AutoSize = true;
+            this.RoomDescription.Location = new System.Drawing.Point(611, 84);
+            this.RoomDescription.Name = "RoomDescription";
+            this.RoomDescription.Size = new System.Drawing.Size(79, 17);
+            this.RoomDescription.TabIndex = 11;
+            this.RoomDescription.Text = "Description";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.RoomsBindingSource, "Description", true));
+            this.richTextBox1.Location = new System.Drawing.Point(425, 105);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(450, 202);
+            this.richTextBox1.TabIndex = 12;
+            this.richTextBox1.Text = "";
             // 
             // ZorkMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1015, 554);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.RoomDescription);
+            this.Controls.Add(this.RoomNameDisplay);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.RoomsLabel);
             this.Controls.Add(this.OpenFileButton);
@@ -175,9 +208,12 @@
         private System.Windows.Forms.Label RoomsLabel;
         private System.Windows.Forms.BindingSource gameViewModelBindingSource;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.BindingSource GameBindingSource;
         private System.Windows.Forms.BindingSource RoomsBindingSource;
         private System.Windows.Forms.BindingSource WorldBindingSource;
-        private System.Windows.Forms.BindingSource GameBindingSource;
+        private System.Windows.Forms.TextBox RoomNameDisplay;
+        private System.Windows.Forms.Label RoomDescription;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
