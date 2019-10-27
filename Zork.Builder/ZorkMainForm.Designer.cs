@@ -49,6 +49,7 @@
             // 
             // gameViewModelBindingSource
             // 
+            this.gameViewModelBindingSource.AllowNew = false;
             this.gameViewModelBindingSource.DataSource = typeof(Zork.Builder.ViewModels.GameViewModel);
             // 
             // AddButton
@@ -114,6 +115,7 @@
             // listBox1
             // 
             this.listBox1.DataSource = this.RoomsBindingSource;
+            this.listBox1.DisplayMember = "Comparer";
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(15, 80);
@@ -128,12 +130,12 @@
             // 
             // WorldBindingSource
             // 
+            this.WorldBindingSource.AllowNew = true;
             this.WorldBindingSource.DataMember = "World";
             this.WorldBindingSource.DataSource = this.GameBindingSource;
             // 
             // GameBindingSource
             // 
-            this.GameBindingSource.AllowNew = true;
             this.GameBindingSource.DataMember = "Game";
             this.GameBindingSource.DataSource = this.gameViewModelBindingSource;
             // 
@@ -173,9 +175,9 @@
         private System.Windows.Forms.Label RoomsLabel;
         private System.Windows.Forms.BindingSource gameViewModelBindingSource;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.BindingSource GameBindingSource;
-        private System.Windows.Forms.BindingSource WorldBindingSource;
         private System.Windows.Forms.BindingSource RoomsBindingSource;
+        private System.Windows.Forms.BindingSource WorldBindingSource;
+        private System.Windows.Forms.BindingSource GameBindingSource;
     }
 }
 
