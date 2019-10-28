@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using Zork.Common;
 using System;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Zork.Builder.ViewModels
 {
@@ -35,6 +37,24 @@ namespace Zork.Builder.ViewModels
                         //Items = new BindingList<Item>(Array.Empty<Item>());
                     }
                 }
+            }
+        }
+
+        public void SaveWorld()
+        {
+            if (string.IsNullOrEmpty(Filename))
+            {
+                throw new InvalidProgramException("Filename expected.");
+            }
+
+            JsonSerializer serializer = new JsonSerializer
+            {
+                Formatting = Formatting.Indented
+            };
+            using (StreamWriter streamWriter = new StreamWriter(Filename))
+            using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter))
+            {
+                serializer.Serialize(jsonWriter, mWorld);
             }
         }
 
