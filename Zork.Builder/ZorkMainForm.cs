@@ -28,7 +28,9 @@ namespace Zork.Builder
             ViewModel = new GameViewModel();
         }
 
-        private void OpenFileButton_Click(object sender, EventArgs e)
+        private GameViewModel mViewModel;
+
+        private void OpenWorldToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -36,7 +38,5 @@ namespace Zork.Builder
                 ViewModel.Filename = openFileDialog.FileName;
             }
         }
-
-        private GameViewModel mViewModel;
     }
 }
