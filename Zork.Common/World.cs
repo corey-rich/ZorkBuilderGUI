@@ -2,12 +2,13 @@
 using System.Linq;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
+using System.ComponentModel;
 
 namespace Zork.Common
 {
     public class World
     {
-        public List<Room> Rooms { get; set; }
+        public BindingList<Room> Rooms { get; set; }
 
         [JsonIgnore]
         public Dictionary<string, Room> RoomsByName => mRoomsByName;

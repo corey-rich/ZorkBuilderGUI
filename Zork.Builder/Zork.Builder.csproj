@@ -55,16 +55,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewModels\GameViewModel.cs" />
-    <Compile Include="ZorkMainForm.cs">
+    <Compile Include="Forms\AddRoomForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ZorkMainForm.Designer.cs">
+    <Compile Include="Forms\AddRoomForm.Designer.cs">
+      <DependentUpon>AddRoomForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="Forms\ZorkMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ZorkMainForm.Designer.cs">
       <DependentUpon>ZorkMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ZorkMainForm.resx">
+    <EmbeddedResource Include="Forms\AddRoomForm.resx">
+      <DependentUpon>AddRoomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ZorkMainForm.resx">
       <DependentUpon>ZorkMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -97,6 +106,7 @@
       <Name>Zork.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.0.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.0.0\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

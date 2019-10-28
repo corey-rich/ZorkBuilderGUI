@@ -11,8 +11,10 @@ namespace Zork.Common
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+
         [JsonProperty(Order = 1)]
         public string Name { get; set; }
+
 
         [JsonProperty(Order = 2)]
         public string Description { get; set; }
@@ -21,7 +23,7 @@ namespace Zork.Common
         private Dictionary<Directions, string> NeighborNames { get; set; }
 
         [JsonIgnore]
-        public Dictionary<Directions, Room> Neighbors { get; private set; }
+        public Dictionary<Directions, Room> Neighbors { get; set; }
 
         public static bool operator ==(Room lhs, Room rhs)
         {
