@@ -9,7 +9,9 @@ namespace Zork.Common
     public class World : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         public BindingList<Room> Rooms { get; set; }
+        //public HashSet<Room> Rooms { get; set; }
 
         [JsonIgnore]
         public Dictionary<string, Room> RoomsByName => mRoomsByName;

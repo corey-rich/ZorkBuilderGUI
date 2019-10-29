@@ -5,12 +5,13 @@ using Newtonsoft.Json;
 using System.IO;
 using Zork.Builder.ViewModels;
 using Zork.Builder.Forms;
+using System.ComponentModel;
 
 namespace Zork.Builder
 {
     public partial class ZorkMainForm : Form
     {
-        private GameViewModel ViewModel
+    private GameViewModel ViewModel
         { 
             get => mViewModel;
             set
@@ -36,8 +37,8 @@ namespace Zork.Builder
             {
                 if (addRoomForm.ShowDialog() == DialogResult.OK)
                 {
-                    Room room = new Room { Name = addRoomForm.RoomName };
-                    ViewModel.Rooms.Add(room); 
+                    Room room = new Room { Name = addRoomForm.RoomName, Description = addRoomForm.RoomDescription };
+                    ViewModel.Rooms.Add(room);
                 }
             }
         }

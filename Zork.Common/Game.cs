@@ -1,15 +1,17 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using Newtonsoft.Json;
 
 namespace Zork.Common
 {
-    public class Game
+    public class Game : INotifyPropertyChanged
     {
-        public World World { get; private set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public World World { get; set; }
 
         [JsonIgnore]
-        public Player Player { get; private set; }
+        public Player Player { get; set; }
 
         [JsonIgnore]
         private bool IsRunning { get; set; }
@@ -68,7 +70,7 @@ namespace Zork.Common
         {
             Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(filename));
             game.Player = game.World.SpawnPlayer();
-
+       
             return game;
         }
 

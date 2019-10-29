@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using Newtonsoft.Json;
 
-
 namespace Zork.Common
 {
 
@@ -24,7 +23,7 @@ namespace Zork.Common
         [JsonIgnore]
         public Dictionary<Directions, Room> Neighbors { get; set; }
 
-        public static bool operator ==(Room lhs, Room rhs)
+        public static bool operator == (Room lhs, Room rhs)
         {
             if (ReferenceEquals(lhs, rhs))
             {
@@ -40,7 +39,6 @@ namespace Zork.Common
         }
 
         public static bool operator !=(Room lhs, Room rhs) => !(lhs == rhs);
-
 
         public override bool Equals(object obj) => obj is Room room ? this == room : false;
 

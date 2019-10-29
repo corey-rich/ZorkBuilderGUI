@@ -3,6 +3,7 @@ using Zork.Common;
 using System;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Zork.Builder.ViewModels
 {
@@ -11,9 +12,10 @@ namespace Zork.Builder.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string Filename { get; set; }
+
         public Game Game { get; set; }
         public BindingList<Room> Rooms { get; set; }
-        //public BindingList<Room> Description { get; set; }
+       // public BindingList<Room> Description { get; set; }
         //public BindingList<Room> Neighbors { get; set; }
       public GameViewModel()
       {
@@ -22,7 +24,7 @@ namespace Zork.Builder.ViewModels
           //Neighbors = new BindingList<Room>();
       }
 
-       public GameViewModel(World world = null) => World = world;
+       public GameViewModel(World room = null) => World = room;
 
         public World World
         {
@@ -34,14 +36,14 @@ namespace Zork.Builder.ViewModels
                     if (mWorld != null)
                     {
                        Rooms = new BindingList<Room>(mWorld.Rooms);
-                       //Description = new BindingList<Room>(mWorld.Rooms);
+                       //Description = new BindingList<Room>(Rooms);
                        //Neighbors = new BindingList<Room>(mWorld.Rooms);
                     }
                     else
                     {
-                        Rooms = new BindingList<Room>(Array.Empty<Room>());
-                       // Description = new BindingList<Room>(Array.Empty<Room>());
-                       // Neighbors = new BindingList<Room>(Array.Empty<Room>());
+                       Rooms = new BindingList<Room>(Array.Empty<Room>());
+                       //Description = new BindingList<Room>(Array.Empty<Room>());
+                       //Neighbors = new BindingList<Room>(Array.Empty<Room>());
                     }
                 }
             }
@@ -53,7 +55,7 @@ namespace Zork.Builder.ViewModels
             {
                 throw new InvalidProgramException("Filename expected.");
             }
-
+      
             JsonSerializer serializer = new JsonSerializer
             {
                 Formatting = Formatting.Indented
@@ -66,11 +68,6 @@ namespace Zork.Builder.ViewModels
         }
 
         private World mWorld;
-
-        public static implicit operator GameViewModel(Room v)
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }
