@@ -9,9 +9,11 @@ using System.ComponentModel;
 
 namespace Zork.Builder
 {
-    public partial class ZorkMainForm : Form
+    public partial class ZorkMainForm : Form, INotifyPropertyChanged
     {
-    private GameViewModel ViewModel
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private GameViewModel ViewModel
         { 
             get => mViewModel;
             set
