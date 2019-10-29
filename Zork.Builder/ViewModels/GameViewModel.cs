@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using Zork.Common;
 using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.IO;
 
@@ -13,17 +12,17 @@ namespace Zork.Builder.ViewModels
 
         public string Filename { get; set; }
         public Game Game { get; set; }
-        public List<Room> Rooms { get; set; }
-        public List<Room> Description { get; set; }
-        public List<Room> Neighbors { get; set; }
-        public GameViewModel()
-        {
-            Rooms = new List<Room>();
-            Description = new List<Room>();
-            Neighbors = new List<Room>();
-        }
+        public BindingList<Room> Rooms { get; set; }
+        //public BindingList<Room> Description { get; set; }
+        //public BindingList<Room> Neighbors { get; set; }
+      public GameViewModel()
+      {
+          Rooms = new BindingList<Room>();
+          //Description = new BindingList<Room>();
+          //Neighbors = new BindingList<Room>();
+      }
 
-        public GameViewModel(World world = null) => World = world;
+       public GameViewModel(World world = null) => World = world;
 
         public World World
         {
@@ -34,15 +33,15 @@ namespace Zork.Builder.ViewModels
                     mWorld = value;
                     if (mWorld != null)
                     {
-                        Rooms = new List<Room>(mWorld.Rooms);
-                        Description = new List<Room>(mWorld.Rooms);
-                        Neighbors = new List<Room>(mWorld.Rooms);
+                       Rooms = new BindingList<Room>(mWorld.Rooms);
+                       //Description = new BindingList<Room>(mWorld.Rooms);
+                       //Neighbors = new BindingList<Room>(mWorld.Rooms);
                     }
                     else
                     {
-                        Rooms = new List<Room>(Array.Empty<Room>());
-                        Description = new List<Room>(Array.Empty<Room>());
-                        Neighbors = new List<Room>(Array.Empty<Room>());
+                        Rooms = new BindingList<Room>(Array.Empty<Room>());
+                       // Description = new BindingList<Room>(Array.Empty<Room>());
+                       // Neighbors = new BindingList<Room>(Array.Empty<Room>());
                     }
                 }
             }
@@ -67,6 +66,11 @@ namespace Zork.Builder.ViewModels
         }
 
         private World mWorld;
+
+        public static implicit operator GameViewModel(Room v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

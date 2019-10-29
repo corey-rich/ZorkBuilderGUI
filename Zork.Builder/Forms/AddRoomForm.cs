@@ -23,7 +23,7 @@ namespace Zork.Builder.Forms
 
         private void RoomNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            OKButton.Enabled = !string.IsNullOrEmpty(RoomName) && !string.IsNullOrEmpty(RoomDescription);
+            OKButton.Enabled = !string.IsNullOrEmpty(RoomName);
         }
     }
 }

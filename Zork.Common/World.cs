@@ -6,8 +6,9 @@ using System.ComponentModel;
 
 namespace Zork.Common
 {
-    public class World
+    public class World : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         public BindingList<Room> Rooms { get; set; }
 
         [JsonIgnore]

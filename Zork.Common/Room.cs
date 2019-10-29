@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using Newtonsoft.Json;
 
+
 namespace Zork.Common
 {
 
@@ -11,10 +12,8 @@ namespace Zork.Common
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-
         [JsonProperty(Order = 1)]
         public string Name { get; set; }
-
 
         [JsonProperty(Order = 2)]
         public string Description { get; set; }

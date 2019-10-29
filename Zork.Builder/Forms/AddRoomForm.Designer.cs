@@ -60,7 +60,7 @@
             this.OKButton.Location = new System.Drawing.Point(12, 261);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(83, 43);
-            this.OKButton.TabIndex = 2;
+            this.OKButton.TabIndex = 4;
             this.OKButton.Text = "&Ok";
             this.OKButton.UseVisualStyleBackColor = true;
             // 
@@ -70,7 +70,7 @@
             this.CancelButton.Location = new System.Drawing.Point(101, 261);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(83, 43);
-            this.CancelButton.TabIndex = 3;
+            this.CancelButton.TabIndex = 5;
             this.CancelButton.Text = "&Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             // 
@@ -80,7 +80,7 @@
             this.DescriptionLabel.Location = new System.Drawing.Point(12, 58);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(79, 17);
-            this.DescriptionLabel.TabIndex = 4;
+            this.DescriptionLabel.TabIndex = 2;
             this.DescriptionLabel.Text = "Description";
             // 
             // DescriptionTextBox
@@ -88,7 +88,7 @@
             this.DescriptionTextBox.Location = new System.Drawing.Point(12, 79);
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(268, 176);
-            this.DescriptionTextBox.TabIndex = 5;
+            this.DescriptionTextBox.TabIndex = 3;
             this.DescriptionTextBox.Text = "";
             // 
             // AddRoomForm
