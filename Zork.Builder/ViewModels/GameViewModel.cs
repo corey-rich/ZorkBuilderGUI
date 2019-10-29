@@ -13,8 +13,8 @@ namespace Zork.Builder.ViewModels
         public string Filename { get; set; }
         public Game Game { get; set; }
         public BindingList<Room> Rooms { get; set; }
-        //public BindingList<Room> Description { get; set; }
-        //public BindingList<Room> Neighbors { get; set; }
+        public BindingList<Room> Description { get; set; }
+        public BindingList<Room> Neighbors { get; set; }
       public GameViewModel()
       {
           Rooms = new BindingList<Room>();
@@ -34,14 +34,14 @@ namespace Zork.Builder.ViewModels
                     if (mWorld != null)
                     {
                        Rooms = new BindingList<Room>(mWorld.Rooms);
-                       //Description = new BindingList<Room>(mWorld.Rooms);
-                       //Neighbors = new BindingList<Room>(mWorld.Rooms);
+                       Description = new BindingList<Room>(mWorld.Rooms);
+                       Neighbors = new BindingList<Room>(mWorld.Rooms);
                     }
                     else
                     {
                         Rooms = new BindingList<Room>(Array.Empty<Room>());
-                       // Description = new BindingList<Room>(Array.Empty<Room>());
-                       // Neighbors = new BindingList<Room>(Array.Empty<Room>());
+                        Description = new BindingList<Room>(Array.Empty<Room>());
+                        Neighbors = new BindingList<Room>(Array.Empty<Room>());
                     }
                 }
             }
