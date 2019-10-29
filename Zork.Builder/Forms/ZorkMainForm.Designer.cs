@@ -34,11 +34,7 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.RoomsLabel = new System.Windows.Forms.Label();
             this.RoomListBox = new System.Windows.Forms.ListBox();
-            this.roomsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.gameViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.RoomsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.WorldBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.GameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RoomNameDisplay = new System.Windows.Forms.TextBox();
             this.RoomDescription = new System.Windows.Forms.Label();
             this.DescriptionTextBox = new System.Windows.Forms.RichTextBox();
@@ -52,19 +48,22 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource1)).BeginInit();
+            this.GameBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.WorldBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.RoomsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RoomsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WorldBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GameBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GameBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WorldBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoomsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // AddButton
             // 
             this.AddButton.Location = new System.Drawing.Point(12, 505);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(100, 40);
+            this.AddButton.Size = new System.Drawing.Size(100, 39);
             this.AddButton.TabIndex = 3;
             this.AddButton.Text = "&Add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -73,8 +72,9 @@
             // DeleteButton
             // 
             this.DeleteButton.Location = new System.Drawing.Point(156, 505);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(100, 40);
+            this.DeleteButton.Size = new System.Drawing.Size(100, 39);
             this.DeleteButton.TabIndex = 4;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -100,43 +100,24 @@
             this.RoomListBox.FormattingEnabled = true;
             this.RoomListBox.ItemHeight = 16;
             this.RoomListBox.Location = new System.Drawing.Point(15, 79);
+            this.RoomListBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RoomListBox.Name = "RoomListBox";
             this.RoomListBox.Size = new System.Drawing.Size(241, 404);
             this.RoomListBox.TabIndex = 9;
             this.RoomListBox.ValueMember = "Description";
             // 
-            // roomsBindingSource1
-            // 
-            this.roomsBindingSource1.DataMember = "Rooms";
-            this.roomsBindingSource1.DataSource = this.gameViewModelBindingSource;
-            // 
             // gameViewModelBindingSource
             // 
             this.gameViewModelBindingSource.DataSource = typeof(Zork.Builder.ViewModels.GameViewModel);
-            // 
-            // RoomsBindingSource
-            // 
-            this.RoomsBindingSource.DataMember = "Rooms";
-            this.RoomsBindingSource.DataSource = this.WorldBindingSource;
-            // 
-            // WorldBindingSource
-            // 
-            this.WorldBindingSource.DataMember = "World";
-            this.WorldBindingSource.DataSource = this.GameBindingSource;
-            // 
-            // GameBindingSource
-            // 
-            this.GameBindingSource.AllowNew = true;
-            this.GameBindingSource.DataMember = "Game";
-            this.GameBindingSource.DataSource = this.gameViewModelBindingSource;
             // 
             // RoomNameDisplay
             // 
             this.RoomNameDisplay.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.RoomsBindingSource, "Name", true));
             this.RoomNameDisplay.Location = new System.Drawing.Point(425, 59);
+            this.RoomNameDisplay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RoomNameDisplay.Name = "RoomNameDisplay";
             this.RoomNameDisplay.ReadOnly = true;
-            this.RoomNameDisplay.Size = new System.Drawing.Size(450, 22);
+            this.RoomNameDisplay.Size = new System.Drawing.Size(449, 22);
             this.RoomNameDisplay.TabIndex = 10;
             this.RoomNameDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -152,9 +133,10 @@
             // DescriptionTextBox
             // 
             this.DescriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.RoomsBindingSource, "Description", true));
-            this.DescriptionTextBox.Location = new System.Drawing.Point(425, 131);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(425, 130);
+            this.DescriptionTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(450, 202);
+            this.DescriptionTextBox.Size = new System.Drawing.Size(449, 202);
             this.DescriptionTextBox.TabIndex = 12;
             this.DescriptionTextBox.Text = "";
             // 
@@ -173,6 +155,7 @@
             this.NeighborsListBox.FormattingEnabled = true;
             this.NeighborsListBox.ItemHeight = 16;
             this.NeighborsListBox.Location = new System.Drawing.Point(425, 367);
+            this.NeighborsListBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NeighborsListBox.Name = "NeighborsListBox";
             this.NeighborsListBox.Size = new System.Drawing.Size(117, 116);
             this.NeighborsListBox.TabIndex = 14;
@@ -181,8 +164,9 @@
             // NeighborsDescriptionBox
             // 
             this.NeighborsDescriptionBox.Location = new System.Drawing.Point(549, 367);
+            this.NeighborsDescriptionBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NeighborsDescriptionBox.Name = "NeighborsDescriptionBox";
-            this.NeighborsDescriptionBox.Size = new System.Drawing.Size(326, 116);
+            this.NeighborsDescriptionBox.Size = new System.Drawing.Size(327, 116);
             this.NeighborsDescriptionBox.TabIndex = 15;
             this.NeighborsDescriptionBox.Text = "";
             // 
@@ -193,7 +177,8 @@
             this.fileToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1015, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1015, 30);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -205,7 +190,7 @@
             this.saveAsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem1.Size = new System.Drawing.Size(46, 26);
             this.fileToolStripMenuItem1.Text = "File";
             // 
             // openWorldToolStripMenuItem
@@ -242,7 +227,22 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "World Files (*.json)|*.json";
-            this.saveFileDialog1.Title = "Save World as";
+            this.saveFileDialog1.Title = "Save World";
+            // 
+            // GameBindingSource
+            // 
+            this.GameBindingSource.DataMember = "Game";
+            this.GameBindingSource.DataSource = this.gameViewModelBindingSource;
+            // 
+            // WorldBindingSource
+            // 
+            this.WorldBindingSource.DataMember = "World";
+            this.WorldBindingSource.DataSource = this.GameBindingSource;
+            // 
+            // RoomsBindingSource
+            // 
+            this.RoomsBindingSource.DataMember = "Rooms";
+            this.RoomsBindingSource.DataSource = this.WorldBindingSource;
             // 
             // ZorkMainForm
             // 
@@ -262,17 +262,16 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "ZorkMainForm";
             this.Text = "Zork Builder";
-            ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RoomsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WorldBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GameBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GameBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WorldBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoomsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,10 +297,9 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.BindingSource gameViewModelBindingSource;
-        private System.Windows.Forms.BindingSource GameBindingSource;
-        private System.Windows.Forms.BindingSource WorldBindingSource;
         private System.Windows.Forms.BindingSource RoomsBindingSource;
-        private System.Windows.Forms.BindingSource roomsBindingSource1;
+        private System.Windows.Forms.BindingSource WorldBindingSource;
+        private System.Windows.Forms.BindingSource GameBindingSource;
     }
 }
 
