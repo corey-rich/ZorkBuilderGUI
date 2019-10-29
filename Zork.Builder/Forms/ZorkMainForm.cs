@@ -13,23 +13,10 @@ namespace Zork.Builder
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private GameViewModel ViewModel
-        { 
-            get => mViewModel;
-            set
-            {
-                if (mViewModel != value)
-                {
-                    mViewModel = value;
-                    gameViewModelBindingSource.DataSource = mViewModel;
-                }
-            }
-        }
-
         public ZorkMainForm()
         {
             InitializeComponent();
-            ViewModel = new GameViewModel();
+            mViewModel = new GameViewModel();
         }
 
         //Trying too be able to add rooms but it isn't updating the rooms list box.
@@ -39,8 +26,8 @@ namespace Zork.Builder
             {
                 if (addRoomForm.ShowDialog() == DialogResult.OK)
                 {
-                    Room room = new Room { Name = addRoomForm.RoomName, Description = addRoomForm.RoomDescription };
-                    ViewModel.Rooms.Add(room);
+                    Room room = new Room { Name = addRoomForm.RoomName };
+                    mViewModel.Rooms.Add(room);
                 }
             }
         }
@@ -50,22 +37,24 @@ namespace Zork.Builder
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ViewModel.Game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(openFileDialog.FileName));
-                ViewModel.Filename = openFileDialog.FileName;
+                Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(openFileDialog.FileName));
+                mViewModel.World = game.World;
+                roomsBindingSource.DataSource = mViewModel.Rooms;
+                mViewModel.Filename = openFileDialog.FileName;
             }
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ViewModel.SaveWorld();
+            mViewModel.SaveWorld();
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                ViewModel.Filename = saveFileDialog1.FileName;
-                ViewModel.SaveWorld();
+                mViewModel.Filename = saveFileDialog1.FileName;
+                mViewModel.SaveWorld();
             }
         }
 

@@ -11,11 +11,6 @@ namespace Zork.Builder.Forms
             set => RoomNameTextBox.Text = value;
         }
 
-        public string RoomDescription
-        {
-            get => DescriptionTextBox.Text;
-            set => DescriptionTextBox.Text = value;
-        }
         public AddRoomForm()
         {
             InitializeComponent();
@@ -23,7 +18,7 @@ namespace Zork.Builder.Forms
 
         private void RoomNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            OKButton.Enabled = !string.IsNullOrEmpty(RoomName);
+            okButton.Enabled = !string.IsNullOrEmpty(RoomName);
         }
     }
 }

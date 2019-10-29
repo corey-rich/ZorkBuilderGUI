@@ -30,87 +30,63 @@
         {
             this.RoomNameLabel = new System.Windows.Forms.Label();
             this.RoomNameTextBox = new System.Windows.Forms.TextBox();
-            this.OKButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.DescriptionLabel = new System.Windows.Forms.Label();
-            this.DescriptionTextBox = new System.Windows.Forms.RichTextBox();
+            this.okButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RoomNameLabel
             // 
             this.RoomNameLabel.AutoSize = true;
-            this.RoomNameLabel.Location = new System.Drawing.Point(7, 7);
-            this.RoomNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.RoomNameLabel.Location = new System.Drawing.Point(9, 9);
             this.RoomNameLabel.Name = "RoomNameLabel";
-            this.RoomNameLabel.Size = new System.Drawing.Size(66, 13);
+            this.RoomNameLabel.Size = new System.Drawing.Size(86, 17);
             this.RoomNameLabel.TabIndex = 0;
             this.RoomNameLabel.Text = "Room Name";
             // 
             // RoomNameTextBox
             // 
-            this.RoomNameTextBox.Location = new System.Drawing.Point(9, 24);
-            this.RoomNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.RoomNameTextBox.Location = new System.Drawing.Point(12, 30);
+            this.RoomNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RoomNameTextBox.Name = "RoomNameTextBox";
-            this.RoomNameTextBox.Size = new System.Drawing.Size(202, 20);
+            this.RoomNameTextBox.Size = new System.Drawing.Size(268, 22);
             this.RoomNameTextBox.TabIndex = 1;
             this.RoomNameTextBox.TextChanged += new System.EventHandler(this.RoomNameTextBox_TextChanged);
             // 
-            // OKButton
+            // okButton
             // 
-            this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OKButton.Enabled = false;
-            this.OKButton.Location = new System.Drawing.Point(9, 212);
-            this.OKButton.Margin = new System.Windows.Forms.Padding(2);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(62, 35);
-            this.OKButton.TabIndex = 4;
-            this.OKButton.Text = "&Ok";
-            this.OKButton.UseVisualStyleBackColor = true;
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okButton.Enabled = false;
+            this.okButton.Location = new System.Drawing.Point(110, 56);
+            this.okButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(83, 27);
+            this.okButton.TabIndex = 4;
+            this.okButton.Text = "&Ok";
+            this.okButton.UseVisualStyleBackColor = true;
             // 
-            // CancelButton
+            // cancelButton
             // 
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Location = new System.Drawing.Point(76, 212);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(2);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(62, 35);
-            this.CancelButton.TabIndex = 5;
-            this.CancelButton.Text = "&Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            // 
-            // DescriptionLabel
-            // 
-            this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.Location = new System.Drawing.Point(9, 47);
-            this.DescriptionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(60, 13);
-            this.DescriptionLabel.TabIndex = 2;
-            this.DescriptionLabel.Text = "Description";
-            // 
-            // DescriptionTextBox
-            // 
-            this.DescriptionTextBox.Location = new System.Drawing.Point(9, 64);
-            this.DescriptionTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(202, 144);
-            this.DescriptionTextBox.TabIndex = 3;
-            this.DescriptionTextBox.Text = "";
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(199, 56);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(83, 27);
+            this.cancelButton.TabIndex = 5;
+            this.cancelButton.Text = "&Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // AddRoomForm
             // 
-            this.AcceptButton = this.OKButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.okButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(219, 256);
-            this.Controls.Add(this.DescriptionTextBox);
-            this.Controls.Add(this.DescriptionLabel);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.OKButton);
+            this.ClientSize = new System.Drawing.Size(292, 95);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.okButton);
             this.Controls.Add(this.RoomNameTextBox);
             this.Controls.Add(this.RoomNameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddRoomForm";
@@ -126,9 +102,7 @@
 
         private System.Windows.Forms.Label RoomNameLabel;
         private System.Windows.Forms.TextBox RoomNameTextBox;
-        private System.Windows.Forms.Button OKButton;
-        private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.Label DescriptionLabel;
-        private System.Windows.Forms.RichTextBox DescriptionTextBox;
+        private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }

@@ -3,7 +3,7 @@ using Zork.Common;
 using System;
 using Newtonsoft.Json;
 using System.IO;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Zork.Builder.ViewModels
 {
@@ -13,14 +13,13 @@ namespace Zork.Builder.ViewModels
 
         public string Filename { get; set; }
 
-        public Game Game { get; set; }
-        public BindingList<Room> Rooms { get; set; }
-      public GameViewModel()
-      {
-          Rooms = new BindingList<Room>();
-      }
 
-       public GameViewModel(World room = null) => World = room;
+        public BindingList<Room> Rooms { get; set; }
+
+        public GameViewModel()
+        {
+            Rooms = new BindingList<Room>();
+        }
 
         public World World
         {
@@ -31,11 +30,11 @@ namespace Zork.Builder.ViewModels
                     mWorld = value;
                     if (mWorld != null)
                     {
-                       Rooms = new BindingList<Room>(mWorld.Rooms);
+                        Rooms = new BindingList<Room>(mWorld.Rooms.ToList());
                     }
                     else
                     {
-                       Rooms = new BindingList<Room>(Array.Empty<Room>());
+                        Rooms = new BindingList<Room>(Array.Empty<Room>());
                     }
                 }
             }
@@ -47,7 +46,7 @@ namespace Zork.Builder.ViewModels
             {
                 throw new InvalidProgramException("Filename expected.");
             }
-      
+
             JsonSerializer serializer = new JsonSerializer
             {
                 Formatting = Formatting.Indented
