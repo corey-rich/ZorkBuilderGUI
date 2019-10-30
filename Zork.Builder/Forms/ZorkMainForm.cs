@@ -1,11 +1,13 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
-using Zork.Common;
-using Newtonsoft.Json;
 using System.IO;
+using System.Reflection;
+using System.Linq;
+using Newtonsoft.Json;
 using Zork.Builder.ViewModels;
 using Zork.Builder.Forms;
-using System.ComponentModel;
+using Zork.Common;
 
 namespace Zork.Builder
 {
@@ -13,13 +15,26 @@ namespace Zork.Builder
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public static string AssemblyTitle = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
+
         public ZorkMainForm()
         {
             InitializeComponent();
             mViewModel = new GameViewModel();
+            isWorldLoaded = false;
         }
 
-        //Trying too be able to add rooms but it isn't updating the rooms list box.
+        private bool isWorldLoaded 
+        {   
+            get => mIsWorldLoaded;
+            set
+            {
+                mIsWorldLoaded = value;
+                AddButton.Enabled = mIsWorldLoaded;
+            }
+        }
+
+        //Adding rooms to the RoomListBox
         private void AddButton_Click(object sender, EventArgs e)
         {
             using (AddRoomForm addRoomForm = new AddRoomForm())
@@ -32,6 +47,7 @@ namespace Zork.Builder
             }
         }
 
+        #region Menu Strip Items
         //Tool Strip Menu Items
         private void OpenWorldToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -41,29 +57,41 @@ namespace Zork.Builder
                 mViewModel.World = game.World;
                 roomsBindingSource.DataSource = mViewModel.Rooms;
                 mViewModel.Filename = openFileDialog.FileName;
+                isWorldLoaded = true;
             }
         }
 
-        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            mViewModel.SaveWorld();
-        }
-
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e) => mViewModel.SaveWorld();
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (SaveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                mViewModel.Filename = saveFileDialog1.FileName;
+                mViewModel.Filename = SaveFileDialog.FileName;
                 mViewModel.SaveWorld();
             }
         }
 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Close();
         }
+        #endregion Menu Strip Items
 
+        private void RoomListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DeleteButton.Enabled = RoomListBox.SelectedItem != null;
+        }
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Delete this Room?", AssemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                mViewModel.Rooms.Remove((Room)RoomListBox.SelectedItem);
+                RoomListBox.SelectedItem = mViewModel.Rooms.FirstOrDefault();
+            }
+        }
 
+        private bool mIsWorldLoaded;
         private GameViewModel mViewModel;
+
     }
 }
