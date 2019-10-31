@@ -16,12 +16,6 @@ namespace Zork.Common
         [JsonIgnore]
         private bool IsRunning { get; set; }
 
-        public Game(World world, Player player)
-        {
-            World = world;
-            Player = player;
-        }
-
         public void Run()
         {
             IsRunning = true;

@@ -10,7 +10,7 @@ namespace Zork.Common
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public HashSet<Room> Rooms { get; set; }
+        public List<Room> Rooms { get; set; }
 
         [JsonIgnore]
         public Dictionary<string, Room> RoomsByName => mRoomsByName;

@@ -21,16 +21,17 @@ namespace Zork.Builder.ViewModels
             Rooms = new BindingList<Room>();
         }
 
-        public World World
+        public Game Game
         {
+            get => mGame;
             set
             {
-                if (mWorld != value)
+                if (mGame != value)
                 {
-                    mWorld = value;
-                    if (mWorld != null)
+                    mGame = value;
+                    if (mGame != null && mGame.World != null && mGame.World.Rooms != null)
                     {
-                        Rooms = new BindingList<Room>(mWorld.Rooms.ToList());
+                        Rooms = new BindingList<Room>(mGame.World.Rooms);
                     }
                     else
                     {
@@ -40,7 +41,7 @@ namespace Zork.Builder.ViewModels
             }
         }
 
-        public void SaveWorld()
+        public void SaveGame()
         {
             if (string.IsNullOrEmpty(Filename))
             {
@@ -54,11 +55,10 @@ namespace Zork.Builder.ViewModels
             using (StreamWriter streamWriter = new StreamWriter(Filename))
             using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter))
             {
-                serializer.Serialize(jsonWriter, mWorld);
+                serializer.Serialize(jsonWriter, mGame);
             }
         }
 
-        private World mWorld;
+        private Game mGame;
     }
-
 }

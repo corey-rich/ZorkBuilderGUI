@@ -166,7 +166,7 @@
             this.NorthNeighborsControl.Directions = Zork.Common.Directions.North;
             this.NorthNeighborsControl.Location = new System.Drawing.Point(549, 323);
             this.NorthNeighborsControl.Name = "NorthNeighborsControl";
-            this.NorthNeighborsControl.Neighbors = null;
+            this.NorthNeighborsControl.Neighbor = null;
             this.NorthNeighborsControl.Room = null;
             this.NorthNeighborsControl.Size = new System.Drawing.Size(229, 60);
             this.NorthNeighborsControl.TabIndex = 17;
@@ -185,7 +185,7 @@
             this.SouthNeighborsControl.Directions = Zork.Common.Directions.South;
             this.SouthNeighborsControl.Location = new System.Drawing.Point(549, 455);
             this.SouthNeighborsControl.Name = "SouthNeighborsControl";
-            this.SouthNeighborsControl.Neighbors = null;
+            this.SouthNeighborsControl.Neighbor = null;
             this.SouthNeighborsControl.Room = null;
             this.SouthNeighborsControl.Size = new System.Drawing.Size(229, 60);
             this.SouthNeighborsControl.TabIndex = 19;
@@ -195,7 +195,7 @@
             this.WestNeighborsControl.Directions = Zork.Common.Directions.West;
             this.WestNeighborsControl.Location = new System.Drawing.Point(425, 389);
             this.WestNeighborsControl.Name = "WestNeighborsControl";
-            this.WestNeighborsControl.Neighbors = null;
+            this.WestNeighborsControl.Neighbor = null;
             this.WestNeighborsControl.Room = null;
             this.WestNeighborsControl.Size = new System.Drawing.Size(229, 60);
             this.WestNeighborsControl.TabIndex = 20;
@@ -205,7 +205,7 @@
             this.EastNeighborsControl.Directions = Zork.Common.Directions.East;
             this.EastNeighborsControl.Location = new System.Drawing.Point(660, 389);
             this.EastNeighborsControl.Name = "EastNeighborsControl";
-            this.EastNeighborsControl.Neighbors = null;
+            this.EastNeighborsControl.Neighbor = null;
             this.EastNeighborsControl.Room = null;
             this.EastNeighborsControl.Size = new System.Drawing.Size(229, 60);
             this.EastNeighborsControl.TabIndex = 21;

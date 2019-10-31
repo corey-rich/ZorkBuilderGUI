@@ -49,8 +49,7 @@ namespace Zork.Builder
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(openFileDialog.FileName));
-                mViewModel.World = game.World;
+                mViewModel.Game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(openFileDialog.FileName));
                 roomsBindingSource.DataSource = mViewModel.Rooms;
                 mViewModel.Filename = openFileDialog.FileName;
                 isWorldLoaded = true;
@@ -58,18 +57,19 @@ namespace Zork.Builder
                 Room selectedRoom = RoomListBox.SelectedItem as Room;
                 foreach (var control in mNeighborsControlMap.Values)
                 {
+                    control.World = mViewModel.Game.World;
                     control.Room = selectedRoom;
                 }
             }
         }
 
-        private void SaveToolStripMenuItem_Click(object sender, EventArgs e) => mViewModel.SaveWorld();
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e) => mViewModel.SaveGame();
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SaveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 mViewModel.Filename = SaveFileDialog.FileName;
-                mViewModel.SaveWorld();
+                mViewModel.SaveGame();
             }
         }
 

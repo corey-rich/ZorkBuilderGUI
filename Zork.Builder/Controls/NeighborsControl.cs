@@ -6,6 +6,8 @@ namespace Zork.Builder.Controls
 {
     public partial class NeighborsControl : UserControl
     {
+        public World World { get; set; }
+
         public Room Room
         {
             get => mRoom;
@@ -16,12 +18,12 @@ namespace Zork.Builder.Controls
                     mRoom = value;
                     if(mRoom != null)
                     {
-                        var roomNeighbors = new List<Room>(mRoom.RoomNeighbors);
-                        roomNeighbors.Insert(0, NoNeighbor);
+                        var rooms = new List<Room>(World?.Rooms);
+                        rooms.Insert(0, NoNeighbor);
 
                         NeighborsComboBox.SelectedIndexChanged -= NeighborsComboBox_SelectedIndexChanged;
-                        NeighborsComboBox.DataSource = roomNeighbors;
-                        Neighbors = mRoom.Neighbors.TryGetValue(Directions, out Room neighbors) ? neighbors : NoNeighbor;
+                        NeighborsComboBox.DataSource = rooms;
+                        Neighbor = mRoom.Neighbors.TryGetValue(Directions, out Room neighbor) ? neighbor : NoNeighbor;
                         NeighborsComboBox.SelectedIndexChanged += NeighborsComboBox_SelectedIndexChanged;
                     }
                     else
@@ -31,6 +33,7 @@ namespace Zork.Builder.Controls
                 }
             }
         }
+
         public Directions Directions
         {
             get => mDirections;
@@ -41,11 +44,12 @@ namespace Zork.Builder.Controls
             }
         }
 
-        public Room Neighbors
+        public Room Neighbor
         {
             get => (Room)NeighborsComboBox.SelectedItem;
             set => NeighborsComboBox.SelectedItem = value;
         }
+
         public NeighborsControl()
         {
             InitializeComponent();
@@ -54,7 +58,7 @@ namespace Zork.Builder.Controls
         {
             if(mRoom != null)
             {
-                Room neighbors = Neighbors;
+                Room neighbors = Neighbor;
                 if (neighbors == NoNeighbor)
                 {
                     mRoom.Neighbors.Remove(Directions);
@@ -70,6 +74,5 @@ namespace Zork.Builder.Controls
 
         private Room mRoom;
         private Directions mDirections;
-
     }
 }
