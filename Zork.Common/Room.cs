@@ -34,7 +34,7 @@ namespace Zork.Common
             Name = name;
             Description = description;
             //NeighborDirections = neighborDirections ?? new List<string>();
-            //NeighborNames = neighborNames;
+            NeighborNames = neighborNames;
             RoomNeighbors = new List<Room>();
             Neighbors = new Dictionary<Directions, Room>();
         }
