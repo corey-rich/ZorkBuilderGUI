@@ -8,6 +8,8 @@ using Newtonsoft.Json;
 using Zork.Builder.ViewModels;
 using Zork.Builder.Forms;
 using Zork.Common;
+using System.Collections.Generic;
+using Zork.Builder.Controls;
 
 namespace Zork.Builder
 {
@@ -22,6 +24,13 @@ namespace Zork.Builder
             InitializeComponent();
             mViewModel = new GameViewModel();
             isWorldLoaded = false;
+            mNeighborsControlMap = new Dictionary<Directions, NeighborsControl>
+            {
+                { Directions.North, NorthNeighborsControl },
+                { Directions.South, SouthNeighborsControl },
+                { Directions.East, EastNeighborsControl },
+                { Directions.West, WestNeighborsControl },
+            };
         }
 
         private bool isWorldLoaded 
@@ -31,19 +40,6 @@ namespace Zork.Builder
             {
                 mIsWorldLoaded = value;
                 AddButton.Enabled = mIsWorldLoaded;
-            }
-        }
-
-        //Adding rooms to the RoomListBox
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            using (AddRoomForm addRoomForm = new AddRoomForm())
-            {
-                if (addRoomForm.ShowDialog() == DialogResult.OK)
-                {
-                    Room room = new Room { Name = addRoomForm.RoomName };
-                    mViewModel.Rooms.Add(room);
-                }
             }
         }
 
@@ -58,6 +54,12 @@ namespace Zork.Builder
                 roomsBindingSource.DataSource = mViewModel.Rooms;
                 mViewModel.Filename = openFileDialog.FileName;
                 isWorldLoaded = true;
+
+                Room selectedRoom = RoomListBox.SelectedItem as Room;
+                foreach (var control in mNeighborsControlMap.Values)
+                {
+                    control.Room = selectedRoom;
+                }
             }
         }
 
@@ -77,11 +79,21 @@ namespace Zork.Builder
         }
         #endregion Menu Strip Items
 
-        private void RoomListBox_SelectedIndexChanged(object sender, EventArgs e)
+
+        #region Add/Delete Buttons
+        private void AddButton_Click_1(object sender, EventArgs e)
         {
-            DeleteButton.Enabled = RoomListBox.SelectedItem != null;
+            using (AddRoomForm addRoomForm = new AddRoomForm())
+            {
+                if (addRoomForm.ShowDialog() == DialogResult.OK)
+                {
+                    Room room = new Room { Name = addRoomForm.RoomName };
+                    mViewModel.Rooms.Add(room);
+                }
+            }
         }
-        private void DeleteButton_Click(object sender, EventArgs e)
+
+        private void DeleteButton_Click_1(object sender, EventArgs e)
         {
             if (MessageBox.Show("Delete this Room?", AssemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -89,7 +101,20 @@ namespace Zork.Builder
                 RoomListBox.SelectedItem = mViewModel.Rooms.FirstOrDefault();
             }
         }
+        #endregion
 
+        private void RoomListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DeleteButton.Enabled = RoomListBox.SelectedItem != null;
+
+            Room selectedRoom = RoomListBox.SelectedItem as Room;
+            foreach (var control in mNeighborsControlMap.Values)
+            {
+                control.Room = selectedRoom;
+            }
+        }
+
+        private readonly Dictionary<Directions, NeighborsControl> mNeighborsControlMap;
         private bool mIsWorldLoaded;
         private GameViewModel mViewModel;
 

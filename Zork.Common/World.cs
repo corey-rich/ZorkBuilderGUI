@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
 using System.Runtime.Serialization;
 using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace Zork.Common
 {
