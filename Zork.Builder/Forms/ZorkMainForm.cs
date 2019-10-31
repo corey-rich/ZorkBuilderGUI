@@ -1,15 +1,15 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.IO;
-using System.Reflection;
-using System.Linq;
-using Newtonsoft.Json;
-using Zork.Builder.ViewModels;
-using Zork.Builder.Forms;
-using Zork.Common;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
 using Zork.Builder.Controls;
+using Zork.Builder.Forms;
+using Zork.Builder.ViewModels;
+using Zork.Common;
 
 namespace Zork.Builder
 {
@@ -51,6 +51,7 @@ namespace Zork.Builder
             {
                 mViewModel.Game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(openFileDialog.FileName));
                 roomsBindingSource.DataSource = mViewModel.Rooms;
+                StartingLocationBindingSource.DataSource = mViewModel.Rooms;
                 mViewModel.Filename = openFileDialog.FileName;
                 isWorldLoaded = true;
 
@@ -118,5 +119,9 @@ namespace Zork.Builder
         private bool mIsWorldLoaded;
         private GameViewModel mViewModel;
 
+        private void StartingLocationComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mViewModel.StartingLocation = StartingLocationComboBox1.Text;
+        }
     }
 }

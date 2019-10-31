@@ -51,8 +51,16 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.RoomsLabel = new System.Windows.Forms.Label();
             this.RoomNameTextBox = new System.Windows.Forms.TextBox();
+            this.StartingLocationComboBox1 = new System.Windows.Forms.ComboBox();
+            this.StartingLocationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.StartingLocationLabel = new System.Windows.Forms.Label();
+            this.StartUpMessageLabel = new System.Windows.Forms.Label();
+            this.StartMessageTextBox = new System.Windows.Forms.RichTextBox();
+            this.gameViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StartingLocationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -104,7 +112,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1015, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1202, 28);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -170,6 +178,7 @@
             this.NorthNeighborsControl.Room = null;
             this.NorthNeighborsControl.Size = new System.Drawing.Size(229, 60);
             this.NorthNeighborsControl.TabIndex = 17;
+            this.NorthNeighborsControl.World = null;
             // 
             // NeighborsLabel
             // 
@@ -189,6 +198,7 @@
             this.SouthNeighborsControl.Room = null;
             this.SouthNeighborsControl.Size = new System.Drawing.Size(229, 60);
             this.SouthNeighborsControl.TabIndex = 19;
+            this.SouthNeighborsControl.World = null;
             // 
             // WestNeighborsControl
             // 
@@ -199,6 +209,7 @@
             this.WestNeighborsControl.Room = null;
             this.WestNeighborsControl.Size = new System.Drawing.Size(229, 60);
             this.WestNeighborsControl.TabIndex = 20;
+            this.WestNeighborsControl.World = null;
             // 
             // EastNeighborsControl
             // 
@@ -209,6 +220,7 @@
             this.EastNeighborsControl.Room = null;
             this.EastNeighborsControl.Size = new System.Drawing.Size(229, 60);
             this.EastNeighborsControl.TabIndex = 21;
+            this.EastNeighborsControl.World = null;
             // 
             // AddButton
             // 
@@ -247,11 +259,64 @@
             this.RoomNameTextBox.Size = new System.Drawing.Size(449, 22);
             this.RoomNameTextBox.TabIndex = 25;
             // 
+            // StartingLocationComboBox1
+            // 
+            this.StartingLocationComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameViewModelBindingSource, "StartingLocation", true));
+            this.StartingLocationComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.gameViewModelBindingSource, "StartingLocation", true));
+            this.StartingLocationComboBox1.DataSource = this.StartingLocationBindingSource;
+            this.StartingLocationComboBox1.DisplayMember = "Name";
+            this.StartingLocationComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.StartingLocationComboBox1.FormattingEnabled = true;
+            this.StartingLocationComboBox1.Location = new System.Drawing.Point(986, 57);
+            this.StartingLocationComboBox1.Name = "StartingLocationComboBox1";
+            this.StartingLocationComboBox1.Size = new System.Drawing.Size(156, 24);
+            this.StartingLocationComboBox1.TabIndex = 26;
+            this.StartingLocationComboBox1.ValueMember = "Description";
+            this.StartingLocationComboBox1.SelectedIndexChanged += new System.EventHandler(this.StartingLocationComboBox1_SelectedIndexChanged);
+            // 
+            // StartingLocationBindingSource
+            // 
+            this.StartingLocationBindingSource.DataSource = typeof(Zork.Common.Room);
+            // 
+            // StartingLocationLabel
+            // 
+            this.StartingLocationLabel.AutoSize = true;
+            this.StartingLocationLabel.Location = new System.Drawing.Point(1007, 37);
+            this.StartingLocationLabel.Name = "StartingLocationLabel";
+            this.StartingLocationLabel.Size = new System.Drawing.Size(115, 17);
+            this.StartingLocationLabel.TabIndex = 27;
+            this.StartingLocationLabel.Text = "Starting Location";
+            // 
+            // StartUpMessageLabel
+            // 
+            this.StartUpMessageLabel.AutoSize = true;
+            this.StartUpMessageLabel.Location = new System.Drawing.Point(1007, 111);
+            this.StartUpMessageLabel.Name = "StartUpMessageLabel";
+            this.StartUpMessageLabel.Size = new System.Drawing.Size(122, 17);
+            this.StartUpMessageLabel.TabIndex = 28;
+            this.StartUpMessageLabel.Text = "Start-Up Message";
+            // 
+            // StartMessageTextBox
+            // 
+            this.StartMessageTextBox.Location = new System.Drawing.Point(986, 132);
+            this.StartMessageTextBox.Name = "StartMessageTextBox";
+            this.StartMessageTextBox.Size = new System.Drawing.Size(156, 169);
+            this.StartMessageTextBox.TabIndex = 29;
+            this.StartMessageTextBox.Text = "";
+            // 
+            // gameViewModelBindingSource
+            // 
+            this.gameViewModelBindingSource.DataSource = typeof(Zork.Builder.ViewModels.GameViewModel);
+            // 
             // ZorkMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1015, 554);
+            this.ClientSize = new System.Drawing.Size(1202, 554);
+            this.Controls.Add(this.StartMessageTextBox);
+            this.Controls.Add(this.StartUpMessageLabel);
+            this.Controls.Add(this.StartingLocationLabel);
+            this.Controls.Add(this.StartingLocationComboBox1);
             this.Controls.Add(this.RoomNameTextBox);
             this.Controls.Add(this.RoomsLabel);
             this.Controls.Add(this.DeleteButton);
@@ -274,6 +339,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StartingLocationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,6 +369,12 @@
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Label RoomsLabel;
         private System.Windows.Forms.TextBox RoomNameTextBox;
+        private System.Windows.Forms.ComboBox StartingLocationComboBox1;
+        private System.Windows.Forms.Label StartingLocationLabel;
+        private System.Windows.Forms.BindingSource StartingLocationBindingSource;
+        private System.Windows.Forms.Label StartUpMessageLabel;
+        private System.Windows.Forms.RichTextBox StartMessageTextBox;
+        private System.Windows.Forms.BindingSource gameViewModelBindingSource;
     }
 }
 

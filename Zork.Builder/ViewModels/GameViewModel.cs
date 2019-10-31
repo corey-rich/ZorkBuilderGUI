@@ -13,6 +13,14 @@ namespace Zork.Builder.ViewModels
 
         public string Filename { get; set; }
 
+        public string StartingLocation
+        {
+            get => mGame?.World?.StartingLocation;
+            set
+            {
+                mGame.World.StartingLocation = value;
+            }
+        }
 
         public BindingList<Room> Rooms { get; set; }
 

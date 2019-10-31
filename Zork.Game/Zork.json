@@ -60,13 +60,13 @@
       },
       {
         "Name": "South of House",
-        "Description": "test",
+        "Description": "You are now south of a white house.",
         "Neighbors": {
           "West": "West of House",
           "East": "Behind House"
         }
       }
     ],
-    "StartingLocation": "West of House"
+    "StartingLocation": "Forest 2"
   }
 }
