@@ -316,7 +316,7 @@
             // 
             this.StartMessageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameViewModelBindingSource, "WelcomeMessage", true));
             this.StartMessageTextBox.Location = new System.Drawing.Point(986, 132);
-            this.StartMessageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameViewModelBindingSource, "StartupMessage", true));
+            //this.StartMessageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameViewModelBindingSource, "StartupMessage", true));
             this.StartMessageTextBox.Location = new System.Drawing.Point(740, 107);
             this.StartMessageTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.StartMessageTextBox.Name = "StartMessageTextBox";
