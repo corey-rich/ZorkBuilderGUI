@@ -22,6 +22,15 @@ namespace Zork.Builder.ViewModels
             }
         }
 
+        public string StartupMessage
+        {
+            get => mGame?.World?.StartupMessage;
+            set
+            {
+                mGame.World.StartupMessage = value;
+            }
+        }
+
         public BindingList<Room> Rooms { get; set; }
 
         public GameViewModel()
