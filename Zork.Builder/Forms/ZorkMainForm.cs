@@ -123,5 +123,10 @@ namespace Zork.Builder
         {
             mViewModel.StartingLocation = StartingLocationComboBox1.Text;
         }
+
+        private void StartMessageTextBox_TextChanged(object sender, EventArgs e)
+        {
+            mViewModel.WelcomeMessage = StartMessageTextBox.Text;
+        }
     }
 }

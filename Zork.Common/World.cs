@@ -15,6 +15,7 @@ namespace Zork.Common
         [JsonIgnore]
         public Dictionary<string, Room> RoomsByName => mRoomsByName;
         public string StartingLocation { get; set; }
+        public string WelcomeMessage { get; set; }
 
         public Player SpawnPlayer() => new Player(this, StartingLocation);
 

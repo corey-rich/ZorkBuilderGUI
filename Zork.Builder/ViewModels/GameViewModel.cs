@@ -22,6 +22,15 @@ namespace Zork.Builder.ViewModels
             }
         }
 
+        public string WelcomeMessage
+        {
+            get => mGame?.World?.WelcomeMessage;
+            set
+            {
+                mGame.World.WelcomeMessage = value;
+            }
+        }
+
         public BindingList<Room> Rooms { get; set; }
 
         public GameViewModel()

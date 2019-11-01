@@ -52,15 +52,15 @@
             this.RoomsLabel = new System.Windows.Forms.Label();
             this.RoomNameTextBox = new System.Windows.Forms.TextBox();
             this.StartingLocationComboBox1 = new System.Windows.Forms.ComboBox();
+            this.gameViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.StartingLocationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.StartingLocationLabel = new System.Windows.Forms.Label();
             this.StartUpMessageLabel = new System.Windows.Forms.Label();
             this.StartMessageTextBox = new System.Windows.Forms.RichTextBox();
-            this.gameViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StartingLocationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartingLocationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -274,6 +274,10 @@
             this.StartingLocationComboBox1.ValueMember = "Description";
             this.StartingLocationComboBox1.SelectedIndexChanged += new System.EventHandler(this.StartingLocationComboBox1_SelectedIndexChanged);
             // 
+            // gameViewModelBindingSource
+            // 
+            this.gameViewModelBindingSource.DataSource = typeof(Zork.Builder.ViewModels.GameViewModel);
+            // 
             // StartingLocationBindingSource
             // 
             this.StartingLocationBindingSource.DataSource = typeof(Zork.Common.Room);
@@ -298,15 +302,13 @@
             // 
             // StartMessageTextBox
             // 
+            this.StartMessageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gameViewModelBindingSource, "WelcomeMessage", true));
             this.StartMessageTextBox.Location = new System.Drawing.Point(986, 132);
             this.StartMessageTextBox.Name = "StartMessageTextBox";
             this.StartMessageTextBox.Size = new System.Drawing.Size(156, 169);
             this.StartMessageTextBox.TabIndex = 29;
             this.StartMessageTextBox.Text = "";
-            // 
-            // gameViewModelBindingSource
-            // 
-            this.gameViewModelBindingSource.DataSource = typeof(Zork.Builder.ViewModels.GameViewModel);
+            this.StartMessageTextBox.TextChanged += new System.EventHandler(this.StartMessageTextBox_TextChanged);
             // 
             // ZorkMainForm
             // 
@@ -339,8 +341,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StartingLocationBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartingLocationBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

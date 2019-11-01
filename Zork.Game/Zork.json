@@ -67,6 +67,7 @@
         }
       }
     ],
-    "StartingLocation": "Forest 2"
+    "StartingLocation": "Forest 1",
+    "WelcomeMessage": "Hello World!"
   }
 }
