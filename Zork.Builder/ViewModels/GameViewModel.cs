@@ -28,6 +28,7 @@ namespace Zork.Builder.ViewModels
             set
             {
                 mGame.World.WelcomeMessage = value;
+
             }
         }
 

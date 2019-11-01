@@ -67,7 +67,7 @@
         }
       }
     ],
-    "StartingLocation": "Forest 1",
-    "WelcomeMessage": "Hello World!"
+    "StartingLocation": "Forest 2",
+	"StartupMessage": "Welcome to Zork"
   }
 }
