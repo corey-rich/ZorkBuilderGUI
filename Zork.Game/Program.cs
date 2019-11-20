@@ -21,7 +21,7 @@ namespace Zork.Game
                 input.ProcessInput();
             }
 
-            Console.WriteLine("Thank you for playing!");
+            game.Output.WriteLine("Thank you for playing!");
         }
 
         private enum CommandLineArguments

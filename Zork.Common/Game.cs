@@ -12,7 +12,7 @@ namespace Zork.Common
         public Player Player { get; private set; }
 
         [JsonIgnore]
-        public bool IsRunning { get; private set; }
+        public bool IsRunning { get; set; }
 
         [JsonIgnore]
         public CommandManager CommandManager { get; }

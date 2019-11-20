@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.UI;
 using Zork.Common;
 
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
         MovesText.text = $"Moves: {Game.Player.Moves}";
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -61,6 +63,11 @@ public class GameManager : MonoBehaviour
             InputService.InputField.text = string.Empty;
             InputService.InputField.Select();
             InputService.InputField.ActivateInputField();
+        }
+
+        if(Game.IsRunning == false)
+        {
+            EditorApplication.isPlaying = false;
         }
     }
 }
