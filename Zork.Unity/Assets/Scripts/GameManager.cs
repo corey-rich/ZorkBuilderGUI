@@ -31,12 +31,11 @@ public class GameManager : MonoBehaviour
         Game.Player.ScoreChanged += Player_ScoreChanged;
         Game.Player.MovesChanged += Player_MovesChanged;
         Game.Player.LocationChanged += Player_LocationChanged;
-        //LocationText.text = $"Location: {Game.Player.LocationName}";
     }
 
     private void Player_LocationChanged(object sender, string e)
     {
-        LocationText.text = $"Location: {Game.Player}";
+        LocationText.text = $"Location: {Game.Player.LocationName}";
     }
 
     private void Player_ScoreChanged(object sender, int e)

@@ -14,12 +14,21 @@ namespace Zork.Common
         public World World { get; }
 
         [JsonIgnore]
-        public Room Location { get; private set; }
+        public Room Location
+        {
+            get => mLocation;
+            
+            set
+            {
+                mLocation = value;
+                LocationChanged?.Invoke(this, mLocation.ToString());
+            }
+        }
 
         public int Moves
         {
             get => mMoves;
-            
+
             set
             {
                 mMoves = value;
@@ -70,5 +79,6 @@ namespace Zork.Common
 
         private int mScore;
         private int mMoves;
+        private Room mLocation;
     }
 }
